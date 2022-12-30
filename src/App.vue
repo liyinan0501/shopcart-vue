@@ -1,6 +1,6 @@
 <template>
   <div>
-    <MyHeader></MyHeader>
+    <MyHeader background="red" title="购物车"></MyHeader>
     <div class="main">
       <MyGoods></MyGoods>
     </div>
