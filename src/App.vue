@@ -1,8 +1,8 @@
 <template>
   <div>
-    <MyHeader background="red" title="购物车"></MyHeader>
+    <MyHeader title="购物车"></MyHeader>
     <div class="main">
-      <MyGoods></MyGoods>
+      <MyGoods v-for="obj in list" :key="obj.id" :obj="obj"></MyGoods>
     </div>
     <MyFooter></MyFooter>
   </div>
@@ -17,6 +17,18 @@ export default {
     MyHeader,
     MyGoods,
     MyFooter,
+  },
+  data() {
+    return {
+      list: [],
+    };
+  },
+  created() {
+    this.$axios({
+      url: "/api/cart",
+    }).then((res) => {
+      this.list = res.data.list;
+    });
   },
 };
 </script>
